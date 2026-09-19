@@ -17,8 +17,8 @@ REST API для социальной платформы Yatube. Через API �
 Клонируйте репозиторий и перейдите в его директорию:
 
 ```bash
-git clone <адрес-репозитория>
-cd api_final_yatube
+git clone https://github.com/19agR/api-final-yatube.git
+cd api-final-yatube
 ```
 
 Создайте и активируйте виртуальное окружение:
@@ -53,6 +53,21 @@ python yatube_api/manage.py runserver
 GET /api/v1/posts/
 ```
 
+Ответ `200 OK`:
+
+```json
+[
+  {
+    "id": 1,
+    "author": "user",
+    "text": "Первая публикация",
+    "pub_date": "2026-09-18T10:00:00Z",
+    "image": null,
+    "group": 1
+  }
+]
+```
+
 Получить JWT-токены:
 
 ```http
@@ -62,6 +77,15 @@ Content-Type: application/json
 {
   "username": "user",
   "password": "password"
+}
+```
+
+Ответ `200 OK`:
+
+```json
+{
+  "refresh": "<refresh-токен>",
+  "access": "<access-токен>"
 }
 ```
 
@@ -78,6 +102,19 @@ Content-Type: application/json
 }
 ```
 
+Ответ `201 Created`:
+
+```json
+{
+  "id": 2,
+  "author": "user",
+  "text": "Новая публикация",
+  "pub_date": "2026-09-18T10:05:00Z",
+  "image": null,
+  "group": 1
+}
+```
+
 Подписаться на автора:
 
 ```http
@@ -89,3 +126,16 @@ Content-Type: application/json
   "following": "author"
 }
 ```
+
+Ответ `201 Created`:
+
+```json
+{
+  "user": "user",
+  "following": "author"
+}
+```
+
+## Автор
+
+[19agR](https://github.com/19agR)
